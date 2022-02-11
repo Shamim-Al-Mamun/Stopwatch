@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="../style.css" />
+        <title>Stop Watch</title>
+    </head>
+    <body>
+        <div class="container">
+            <h4 class="header" id="heading">DIGITAL STOPWATCH</h4>
+            <h1 class= "display" id="timer">0:0:0</h1>
+            <div class="lap-items">
+                <span class= "disLap1" value="" id="lap1"></span>
+                <span class= "disLap2" value="" id="lap2"></span>
+                <span class= "disLap3" value="" id="lap3"></span>
+            </div>
+            <button class="start-btn" id="start" onclick="start()">Start</button>
+            <button class="stop-btn" id="stop" onclick="stop()">Stop</button>
+            <button class="reset-btn" id="reset" onclick="reset()">Reset</button>
+            <button class="lap-btn" id="lap" onclick="lap()">Lap</button>
+        </div>
+    </body>
+    <script src = "../index.js"></script>
+</html>
