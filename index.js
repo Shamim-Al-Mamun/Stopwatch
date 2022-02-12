@@ -4,7 +4,7 @@ var miliSec = 0;
 var timer;
 var x = 1;
 
-//Initializing minute, second and miliseconds values
+//Initializing minute, second and milisecond values
 function callTimer() {
     miliSec++;
     if (miliSec < 100) {
