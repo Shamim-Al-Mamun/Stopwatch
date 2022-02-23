@@ -8,5 +8,7 @@ Basics of HTML, CSS, JavaScript and desire to create something new.
 
 # What you'll Learn
 ES6 Arrow Function
+
 CSS Flexbox
+
 Logical Thinking
