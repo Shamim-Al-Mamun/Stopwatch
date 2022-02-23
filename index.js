@@ -3,7 +3,8 @@ var sec = 0;
 var miliSec = 0;
 var timer;
 var blinker;
-var xlap = 1;
+var n = 0;
+var xlap = 0;
 
 //Initializing minute, second and milisecond values
 function callTimer() {
@@ -65,7 +66,6 @@ function stop() {
     clearInterval(timer);
 
     //blink while stop
-    var n=0;
     if(!miliSec ==0 || !sec ==0 || !min ==0){
         blinker =setInterval(()=>{
         (n % 2  == 0)   ? document.getElementById("timer").style.color = "white"  
@@ -81,6 +81,7 @@ function reset() {
     min = 0;
     sec = 0;
     miliSec = 0;
+    xlap = 0;
     document.getElementById("timer").innerHTML = min + ":" + sec + ":" + miliSec;
 
     //clear laps
@@ -100,26 +101,23 @@ function reset() {
 }
 
 function lap(){
-    if(!miliSec ==0 || !sec ==0 || !min ==0){
-        if (xlap ===1){
-            document.getElementById("lap1").innerHTML=min + ":" + sec +":" + miliSec;
-        }
-        if (xlap ===2){
-            document.getElementById("lap2").innerHTML=min + ":" + sec +":" + miliSec;
-        }
-        if (xlap ===3){
-            document.getElementById("lap3").innerHTML=min + ":" + sec +":" + miliSec;
+    if (xlap ===0){
+        document.getElementById("lap1").innerHTML=min + ":" + sec +":" + miliSec;
+    }
+    if (xlap ===1){
+        document.getElementById("lap2").innerHTML=min + ":" + sec +":" + miliSec;
+    }
+    if (xlap ===2){
+        document.getElementById("lap3").innerHTML=min + ":" + sec +":" + miliSec;
 
-            //disable Lap Button after 3 laps
-            document.getElementById("lap").disabled = true;
-            document.getElementById("lap").style.color = "gray";
-        }
-        if(xlap > 3){
-            xlap = 1;
-        }
-        else{
-            xlap ++;
-        }
+        //disable Lap Button after 3 laps
+        document.getElementById("lap").disabled = true;
+        document.getElementById("lap").style.color = "gray";
+    }
+    if(xlap >= 2){
+        xlap = 0;
+    }
+    else{
+        xlap ++;
     }
 }
-
