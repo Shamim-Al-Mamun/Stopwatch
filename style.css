@@ -1,38 +1,41 @@
-* {
-    font-family: 'Times New Roman', Times, serif;
-    background-color: linen;
+body{
+    margin: 0;
+    padding: 0;
 }
-.container{
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+.flex-container{
+    background-color: rgb(27, 10, 10, .75);
+    width: 100%;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-item{
     background-color: brown;
-    height: 350px;
-    width:  550px;
-    margin-left: 375px;
-    margin-top: 125px;
+    color: white;
+    min-width: 350px;
+    width: 50%;
+    height: 400px;
     border: 3px solid gray;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    justify-content: space-around;
+    align-items: center;
 }
 .header{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
     font-weight: 700;
-    text-align: center;
-    margin-top: 20px;
-    color: white;
-    font-size: 2rem;
-    background-color: inherit;
+    font-size: 3rem;
+    justify-content: flex-start;
 }
-.display{
-    background-color: inherit;
-    text-align: center;
-    color: white;
-}
-.lap-items{
-    background-color: inherit;
-    text-align: center;
-    margin-bottom: 20px;
-}
-.disLap1, .disLap2, .disLap3{
-    background-color: inherit;
+.lap-items > .disLap1, .disLap2, .disLap3{
     margin: 30px;
-    color: white;
+    padding: 5px;
     font-size: 2rem;
     font-weight: 900;
 }
@@ -41,14 +44,36 @@ button{
     color: rgb(255, 255, 255);
     border: 2.5px solid gray;
     padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
-    margin-left: 25px;
+    margin: 10px;
     cursor: pointer;
+    justify-content:flex-end;
+    margin-bottom: 2.5rem;
 }
 button:hover{
     background-color: gray;
+}
+
+@media (max-width: 1100px) {
+    .flex-item{
+        width: 70%;
+    }
+}
+@media (max-width: 800px) {
+    .flex-item{
+        width: 90%;
+    }
+    .header{
+        font-size: 1.5rem;
+        }
+    button{
+        border: 2px solid gray;
+        padding: 5px 10px;
+    }
+    .lap-items > .disLap1, .disLap2, .disLap3{
+        margin: 20px;
+        padding: 2px;
+        font-size: 1rem;
+    }
 }

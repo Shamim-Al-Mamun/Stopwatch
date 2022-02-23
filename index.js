@@ -2,7 +2,8 @@ var min = 0;
 var sec = 0;
 var miliSec = 0;
 var timer;
-var x = 1;
+var blinker;
+var xlap = 1;
 
 //Initializing minute, second and milisecond values
 function callTimer() {
@@ -40,8 +41,13 @@ function start() {
     timer = setInterval(callTimer, 10);
 
     //Enable Lap button after start
-    document.getElementById("lap").disabled = false;
-    document.getElementById("lap").style.color = "white";
+    if(!document.getElementById("lap3").innerHTML){
+        document.getElementById("lap").disabled = false;
+        document.getElementById("lap").style.color = "white";
+    }
+    //clear blink
+    document.getElementById("timer").style.color = "white" 
+    clearInterval(blinker);
 }
 
 function stop() {
@@ -57,10 +63,21 @@ function stop() {
     document.getElementById("stop").disabled = true;
     document.getElementById("stop").style.color = "gray";
     clearInterval(timer);
+
+    //blink while stop
+    var n=0;
+    if(!miliSec ==0 || !sec ==0 || !min ==0){
+        blinker =setInterval(()=>{
+        (n % 2  == 0)   ? document.getElementById("timer").style.color = "white"  
+                        : document.getElementById("timer").style.color = "brown";
+        n++;
+        }, 500);
+    }
 }
 
 function reset() {
-    stop();
+    clearInterval(timer);
+    clearInterval(blinker);
     min = 0;
     sec = 0;
     miliSec = 0;
@@ -70,25 +87,39 @@ function reset() {
     document.getElementById("lap1").innerHTML="";
     document.getElementById("lap2").innerHTML="";
     document.getElementById("lap3").innerHTML="";
+
+    //enable start button after start
+    document.getElementById("start").disabled = false;
+    document.getElementById("start").style.color = "white";
+
+    document.getElementById("timer").style.color = "white" 
+
+    //Diable stop button after stop
+    document.getElementById("stop").disabled = true;
+    document.getElementById("stop").style.color = "gray";
 }
 
 function lap(){
-    if (x ===1){
-        document.getElementById("lap1").innerHTML=min + ":" + sec +":" + miliSec;
-    }
-    if (x ===2){
-        document.getElementById("lap2").innerHTML=min + ":" + sec +":" + miliSec;
-    }
-    if (x ===3){
-        document.getElementById("lap3").innerHTML=min + ":" + sec +":" + miliSec;
-    }
-    if(x > 3){
-        x=1;
-        //disable Lap Button after 3 laps
-        document.getElementById("lap").disabled = true;
-        document.getElementById("lap").style.color = "gray";
-    }
-    else{
-        x++;
+    if(!miliSec ==0 || !sec ==0 || !min ==0){
+        if (xlap ===1){
+            document.getElementById("lap1").innerHTML=min + ":" + sec +":" + miliSec;
+        }
+        if (xlap ===2){
+            document.getElementById("lap2").innerHTML=min + ":" + sec +":" + miliSec;
+        }
+        if (xlap ===3){
+            document.getElementById("lap3").innerHTML=min + ":" + sec +":" + miliSec;
+
+            //disable Lap Button after 3 laps
+            document.getElementById("lap").disabled = true;
+            document.getElementById("lap").style.color = "gray";
+        }
+        if(xlap > 3){
+            xlap = 1;
+        }
+        else{
+            xlap ++;
+        }
     }
 }
+

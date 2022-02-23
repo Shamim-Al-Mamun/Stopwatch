@@ -8,18 +8,22 @@
         <title>Stop Watch</title>
     </head>
     <body>
-        <div class="container">
-            <h4 class="header" id="heading">DIGITAL STOPWATCH</h4>
-            <h1 class= "display" id="timer">0:0:0</h1>
-            <div class="lap-items">
-                <span class= "disLap1" value="" id="lap1"></span>
-                <span class= "disLap2" value="" id="lap2"></span>
-                <span class= "disLap3" value="" id="lap3"></span>
+        <div class="flex-container" >
+            <div class="flex-item">
+                <h4 class="header" id="heading">DIGITAL STOPWATCH</h4>
+                <h1 class= "display" id="timer">0:0:0</h1>
+                <div class="lap-items">
+                    <span class= "disLap1" value="" id="lap1"></span>
+                    <span class= "disLap2" value="" id="lap2"></span>
+                    <span class= "disLap3" value="" id="lap3"></span>
+                </div>
+                <div>
+                    <button class="start-btn" id="start" onclick="start()">Start</button>
+                    <button class="stop-btn" id="stop" onclick="stop()">Stop</button>
+                    <button class="reset-btn" id="reset" onclick="reset()">Reset</button>
+                    <button class="lap-btn" id="lap" onclick="lap()">Lap</button>
+                </div>
             </div>
-            <button class="start-btn" id="start" onclick="start()">Start</button>
-            <button class="stop-btn" id="stop" onclick="stop()">Stop</button>
-            <button class="reset-btn" id="reset" onclick="reset()">Reset</button>
-            <button class="lap-btn" id="lap" onclick="lap()">Lap</button>
         </div>
     </body>
     <script src = "../index.js"></script>
