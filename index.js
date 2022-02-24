@@ -47,7 +47,7 @@ function start() {
         document.getElementById("lap").style.color = "white";
     }
     //clear blink
-    document.getElementById("timer").style.color = "white" 
+    document.getElementById("timer").style.opacity = "1"
     clearInterval(blinker);
 }
 
@@ -68,8 +68,8 @@ function stop() {
     //blink while stop
     if(!miliSec ==0 || !sec ==0 || !min ==0){
         blinker =setInterval(()=>{
-        (n % 2  == 0)   ? document.getElementById("timer").style.color = "white"  
-                        : document.getElementById("timer").style.color = "brown";
+        (n % 2  == 0)   ? document.getElementById("timer").style.opacity = "1"
+                        : document.getElementById("timer").style.opacity = "0";
         n++;
         }, 500);
     }
@@ -93,7 +93,7 @@ function reset() {
     document.getElementById("start").disabled = false;
     document.getElementById("start").style.color = "white";
 
-    document.getElementById("timer").style.color = "white" 
+    document.getElementById("timer").style.opacity = "1" 
 
     //Diable stop button after stop
     document.getElementById("stop").disabled = true;
@@ -101,23 +101,25 @@ function reset() {
 }
 
 function lap(){
-    if (xlap ===0){
-        document.getElementById("lap1").innerHTML=min + ":" + sec +":" + miliSec;
-    }
-    if (xlap ===1){
-        document.getElementById("lap2").innerHTML=min + ":" + sec +":" + miliSec;
-    }
-    if (xlap ===2){
-        document.getElementById("lap3").innerHTML=min + ":" + sec +":" + miliSec;
+    if(!miliSec ==0 || !sec ==0 || !min ==0){
+        if (xlap ===0){
+            document.getElementById("lap1").innerHTML=min + ":" + sec +":" + miliSec;
+        }
+        if (xlap ===1){
+            document.getElementById("lap2").innerHTML=min + ":" + sec +":" + miliSec;
+        }
+        if (xlap ===2){
+            document.getElementById("lap3").innerHTML=min + ":" + sec +":" + miliSec;
 
-        //disable Lap Button after 3 laps
-        document.getElementById("lap").disabled = true;
-        document.getElementById("lap").style.color = "gray";
-    }
-    if(xlap >= 2){
-        xlap = 0;
-    }
-    else{
-        xlap ++;
+            //disable Lap Button after 3 laps
+            document.getElementById("lap").disabled = true;
+            document.getElementById("lap").style.color = "gray";
+        }
+        if(xlap >= 2){
+            xlap = 0;
+        }
+        else{
+            xlap ++;
+        }
     }
 }
